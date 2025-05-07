@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: vivicool/backend-mongodb:latest
+          ports:
+            - containerPort: 3000
+          # Use for the mongodb secret
+          env:
+            - name: MONGO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret # secret file name "mongodb-secret.yaml"
+                  key: mongo-user # base64 key for MongoDB username
+            - name: MONGO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mongodb-secret # secret file name "mongodb-secret.yaml"
+                  key: mongo-password # base64 key for MongoDB password
+            - name: MONGO_DB
+              value: mydatabase # your MongoDB database name
+            - name: MONGO_HOST
+              value: mongodb # service name to access MongoDB inside cluster
