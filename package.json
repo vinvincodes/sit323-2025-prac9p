@@ -8,8 +8,17 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
+    "express": "^5.1.0",
     "mongodb": "^6.16.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinvincodes/sit323-2025-prac9p.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vinvincodes/sit323-2025-prac9p/issues"
+  },
+  "homepage": "https://github.com/vinvincodes/sit323-2025-prac9p#readme",
+  "description": ""
 }

@@ -4,14 +4,16 @@ FROM node:18-slim
 # Set the working directory
 WORKDIR /app
 
-# Copy all files to the container
-COPY . .
+# Copy package file
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
+# Copy the rest of your app
+COPY . .
+
 # Run the app
 CMD ["node", "app.js"]
 
-# Expose port if needed
-EXPOSE 3000
+
